@@ -1,0 +1,96 @@
+#include <iostream>
+
+using namespace std;
+
+// Базовий клас
+class Pair {
+protected:
+    double first;
+    double second;
+
+public:
+
+    Pair() {
+        first = 0;
+        second = 0;
+    }
+
+    Pair(double a, double b) {
+        first = a;
+        second = b;
+    }
+
+    void setValues(double a, double b) {
+        first = a;
+        second = b;
+    }
+
+    double product() {
+        return first * second;
+    }
+};
+
+// Похідний клас
+class Rectangle : public Pair {
+
+public:
+
+    Rectangle() : Pair() {}
+
+    Rectangle(double a, double b)
+        : Pair(a, b) {
+    }
+
+    double perimeter() {
+        return 2 * (first + second);
+    }
+
+    double area() {
+        return first * second;
+    }
+
+    void show() {
+
+        cout << "\nRectangle\n";
+
+        cout << "Side A = "
+            << first
+            << endl;
+
+        cout << "Side B = "
+            << second
+            << endl;
+
+        cout << "Product = "
+            << product()
+            << endl;
+
+        cout << "Perimeter = "
+            << perimeter()
+            << endl;
+
+        cout << "Area = "
+            << area()
+            << endl;
+    }
+};
+
+int main() {
+
+    Rectangle rect;
+
+    double a;
+    double b;
+
+    cout << "Input side A: ";
+    cin >> a;
+
+    cout << "Input side B: ";
+    cin >> b;
+
+    rect.setValues(a, b);
+
+    rect.show();
+
+    return 0;
+}
